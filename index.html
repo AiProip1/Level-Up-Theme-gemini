@@ -1,0 +1,1361 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ليفل أب ستور | وجهة الجيمنج الفاخرة في الكويت</title>
+    <!-- Google Fonts & FontAwesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- Core Variables & Reset --- */
+        :root {
+            --bg-base: #0a0a0c;
+            --bg-surface: #121216;
+            --bg-surface-elevated: #1a1a22;
+            --text-primary: #ffffff;
+            --text-secondary: #94a3b8;
+            --accent-neon: #6366f1;
+            --accent-glow: rgba(99, 102, 241, 0.15);
+            --accent-glow-intense: rgba(168, 85, 247, 0.4);
+            --accent-gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+            --border-color: rgba(255, 255, 255, 0.06);
+            --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            --max-width: 1400px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-base);
+            color: var(--text-primary);
+            font-family: 'Cairo', sans-serif;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* --- Reusable Utilities --- */
+        .section-padding {
+            padding: 6rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .section-tag {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--accent-neon);
+            margin-bottom: 0.75rem;
+            display: inline-block;
+            font-weight: 700;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            letter-spacing: -0.02em;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.85rem 2rem;
+            font-size: 0.95rem;
+            font-weight: 700;
+            border-radius: 4px;
+            transition: var(--transition-smooth);
+            cursor: pointer;
+            letter-spacing: 0.02em;
+            border: none;
+            gap: 0.75rem;
+        }
+
+        .btn-primary {
+            background: var(--accent-gradient);
+            color: white;
+            box-shadow: 0 4px 20px var(--accent-glow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(168, 85, 247, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.03);
+            border-color: var(--accent-neon);
+            transform: translateY(-2px);
+        }
+
+        /* --- Announcement Bar --- */
+        .announcement-bar {
+            background: #000;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-align: center;
+            padding: 0.6rem 0;
+            color: var(--text-secondary);
+        }
+
+        .announcement-bar span {
+            color: var(--text-primary);
+            font-weight: 700;
+        }
+
+        /* --- Header & Navigation --- */
+        .header {
+            background: rgba(10, 10, 12, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            transition: var(--transition-smooth);
+        }
+
+        .header.scrolled {
+            padding: 0.2rem 0;
+            background: rgba(6, 6, 8, 0.95);
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 5rem;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 900;
+            letter-spacing: -0.01em;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo i {
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .nav-link {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            transition: var(--transition-smooth);
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--text-primary);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-gradient);
+            transition: var(--transition-smooth);
+        }
+
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 100%;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .nav-icon-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            position: relative;
+        }
+
+        .nav-icon-btn:hover {
+            color: var(--accent-neon);
+            transform: scale(1.05);
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -5px;
+            left: -8px;
+            background: var(--accent-gradient);
+            font-size: 0.7rem;
+            font-weight: 700;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mobile-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            position: relative;
+            min-height: 50vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            padding: 6rem 0;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 100%;
+            background: radial-gradient(circle, var(--accent-glow-intense) 0%, transparent 70%);
+            z-index: 1;
+            pointer-events: none;
+            filter: blur(50px);
+            opacity: 0.6;
+        }
+
+        .hero-grid {
+            display: block;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border-color);
+            padding: 0.5rem 1rem;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        .hero-tag i {
+            color: var(--accent-neon);
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-title span {
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-desc {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 550px;
+        }
+
+        .hero-btn-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        /* --- Brands Section --- */
+        .brands-section {
+            background: #08080a;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            padding: 2.5rem 0;
+        }
+
+        .brands-slider {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            gap: 2rem;
+            opacity: 0.5;
+        }
+
+        .brand-logo {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            letter-spacing: 0.05em;
+        }
+
+        /* --- Featured Categories --- */
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .category-card {
+            position: relative;
+            height: 450px;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: var(--bg-surface);
+            cursor: pointer;
+        }
+
+        .category-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition-smooth);
+            opacity: 0.5;
+        }
+
+        .category-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, #0a0a0c 0%, rgba(10,10,12,0.4) 50%, transparent 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 2.5rem;
+            z-index: 2;
+        }
+
+        .category-title {
+            font-size: 1.75rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .category-link {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--accent-neon);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition-smooth);
+        }
+
+        .category-card:hover .category-img {
+            transform: scale(1.08);
+            opacity: 0.7;
+        }
+
+        .category-card:hover .category-link {
+            color: white;
+            gap: 0.8rem;
+        }
+
+        /* --- Product Card System --- */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            position: relative;
+            transition: var(--transition-smooth);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(99, 102, 241, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 40px var(--accent-glow);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: var(--accent-gradient);
+            padding: 0.25rem 0.75rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            border-radius: 2px;
+            z-index: 3;
+        }
+
+        .product-wishlist {
+            position: absolute;
+            top: 1.5rem;
+            left: 1.5rem;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--border-color);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            z-index: 3;
+            color: var(--text-secondary);
+        }
+
+        .product-wishlist:hover {
+            color: #ef4444;
+            background: rgba(0,0,0,0.6);
+        }
+
+        .product-img-holder {
+            height: 220px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            position: relative;
+            overflow: hidden;
+            border-radius: 4px;
+            background: rgba(0, 0, 0, 0.15);
+        }
+
+        .product-img-holder img {
+            max-height: 85%;
+            object-fit: contain;
+            transition: var(--transition-smooth);
+        }
+
+        .product-card:hover .product-img-holder img {
+            transform: scale(1.05);
+        }
+
+        .product-info {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .product-cat {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .product-name {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            line-height: 1.5;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            height: 3.3rem;
+        }
+
+        .product-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: auto;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255,255,255,0.03);
+        }
+
+        .product-price {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: #fff;
+        }
+
+        .product-price span {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            text-decoration: line-through;
+            margin-left: 0.5rem;
+            font-weight: 400;
+        }
+
+        .add-to-cart-btn {
+            background: var(--bg-surface-elevated);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            width: 40px;
+            height: 40px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .add-to-cart-btn:hover {
+            background: var(--accent-gradient);
+            border-color: transparent;
+            box-shadow: 0 0 15px var(--accent-glow);
+        }
+
+        /* --- Testimonials Section --- */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            padding: 2rem;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .stars {
+            color: #fbbf24;
+            font-size: 0.8rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .testimonial-text {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .client-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .client-name {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .client-name::before {
+            content: "";
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            background: var(--accent-neon);
+            border-radius: 50%;
+        }
+
+        /* --- FAQ Section --- */
+        .faq-max-width {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            transition: var(--transition-smooth);
+        }
+
+        .faq-trigger {
+            width: 100%;
+            padding: 1.5rem 2rem;
+            background: transparent;
+            border: none;
+            color: var(--text-primary);
+            text-align: right;
+            font-size: 1.1rem;
+            font-weight: 700;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .faq-icon {
+            font-size: 0.9rem;
+            transition: var(--transition-smooth);
+            color: var(--text-secondary);
+        }
+
+        .faq-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        .faq-content-inner {
+            padding: 0 2rem 1.5rem 2rem;
+        }
+
+        .faq-item.active {
+            border-color: rgba(99, 102, 241, 0.2);
+            background: var(--bg-surface-elevated);
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+            color: var(--accent-neon);
+        }
+
+        /* --- Newsletter Section --- */
+        .newsletter-section {
+            position: relative;
+            overflow: hidden;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .newsletter-section::before {
+            content: '';
+            position: absolute;
+            bottom: -50%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 300px;
+            background: radial-gradient(circle, var(--accent-glow-intense) 0%, transparent 70%);
+            filter: blur(60px);
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        .newsletter-container {
+            max-width: 650px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 2.5rem;
+            background: var(--bg-surface);
+            padding: 0.5rem;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+        }
+
+        .newsletter-input {
+            flex-grow: 1;
+            background: transparent;
+            border: none;
+            padding: 0 1.5rem;
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
+        .newsletter-input:focus {
+            outline: none;
+        }
+
+        /* --- Premium Footer --- */
+        .footer {
+            background: #060608;
+            border-top: 1px solid var(--border-color);
+            padding: 5rem 0 2rem 0;
+            font-size: 0.95rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr repeat(3, 1fr);
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer-logo-zone p {
+            color: var(--text-secondary);
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+            max-width: 320px;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 0.85rem;
+            margin-top: 1rem;
+        }
+
+        .footer-social-link {
+            width: 42px;
+            height: 42px;
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition-smooth);
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .footer-social-link:hover {
+            color: var(--text-primary);
+            border-color: var(--accent-neon);
+            transform: translateY(-3px);
+        }
+
+        .footer-title {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .footer-link {
+            color: var(--text-secondary);
+            transition: var(--transition-smooth);
+            display: block;
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-link:hover {
+            color: var(--text-primary);
+            transform: translateX(-4px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--border-color);
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* --- FIXED DOCK (ONLY WHATSAPP & LOCATION ON SIDES) --- */
+        .dock-container {
+            position: fixed;
+            bottom: 2rem;
+            left: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.85rem;
+            z-index: 999;
+        }
+
+        .dock-btn {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.3rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+            transition: var(--transition-smooth);
+            cursor: pointer;
+            border: none;
+        }
+
+        .dock-btn:hover {
+            transform: translateY(-4px) scale(1.05);
+        }
+
+        .dock-whatsapp  { background-color: #25D366; }
+        .dock-location  { background-color: #ef4444; }
+
+        /* --- Responsive Styles --- */
+        @media(max-width: 1200px) {
+            .products-grid { grid-template-columns: repeat(3, 1fr); }
+            .hero-title { font-size: 3.2rem; }
+        }
+
+        @media(max-width: 992px) {
+            .hero-title { font-size: 2.8rem; }
+            .hero-desc { margin: 0 auto 2.5rem auto; }
+            .categories-grid { grid-template-columns: 1fr; }
+            .category-card { height: 350px; }
+            .products-grid { grid-template-columns: repeat(2, 1fr); }
+            .testimonials-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr 1fr; gap: 3rem; }
+            .mobile-toggle { block; }
+            .nav-menu {
+                position: fixed;
+                top: 5.8rem;
+                right: -100%;
+                width: 100%;
+                height: calc(100vh - 5.8rem);
+                background: var(--bg-base);
+                flex-direction: column;
+                align-items: center;
+                padding-top: 3rem;
+                transition: var(--transition-smooth);
+                z-index: 99;
+                border-top: 1px solid var(--border-color);
+            }
+            .nav-menu.active { right: 0; }
+        }
+
+        @media(max-width: 576px) {
+            .container { padding: 0 1.5rem; }
+            .products-grid { grid-template-columns: 1fr; }
+            .hero-title { font-size: 2.2rem; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; gap: 1.5rem; text-align: center; }
+            .newsletter-form { flex-direction: column; background: transparent; border: none; padding: 0; gap: 1rem; }
+            .newsletter-input { background: var(--bg-surface); padding: 1rem; border-radius: 4px; border: 1px solid var(--border-color); }
+            .dock-container { bottom: 1.5rem; left: 1.5rem; gap: 0.6rem; }
+            .dock-btn { width: 44px; height: 44px; font-size: 1.15rem; }
+            .section-padding { padding: 4rem 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- شريط الإعلانات -->
+    <div class="announcement-bar">
+        توصيل سريع مجاني لجميع مناطق الكويت للطلبات فوق 50 د.ك. كود الخصم: <span>REHAB26</span>
+    </div>
+
+    <!-- الهيدر ونظام التنقل -->
+    <header class="header">
+        <div class="container nav-container">
+            <div class="logo">
+                <a href="#"><i class="fa-solid fa-gamepad"></i> ليفل أب</a>
+            </div>
+            <nav class="nav-menu" id="navMenu">
+                <a href="#" class="nav-link active">الرئيسية</a>
+                <a href="#categories" class="nav-link">الأقسام</a>
+                <a href="#bestsellers" class="nav-link">الأكثر مبيعاً</a>
+                <a href="#newarrivals" class="nav-link">وصل حديثاً</a>
+                <a href="#faq" class="nav-link">الدعم الفني</a>
+            </nav>
+            <div class="nav-actions">
+                <button class="nav-icon-btn" aria-label="البحث"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <button class="nav-icon-btn" aria-label="الحساب"><i class="fa-regular fa-user"></i></button>
+                <button class="nav-icon-btn" aria-label="السلة">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span class="cart-badge" id="cartBadge">0</span>
+                </button>
+                <div class="mobile-toggle" id="mobileToggle">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- الهيرو سيكشن -->
+    <section class="hero">
+        <div class="container hero-grid">
+            <div class="hero-tag"><i class="fa-solid fa-bolt"></i> عتاد الجيل القادم متوفر الآن في الكويت</div>
+            <h1 class="hero-title">ارتقِ بـ ساحة<br><span>مواجهاتك الرقمية</span></h1>
+            <p class="hero-desc">جهز سيت اب أحلامك بأقوى القطع الاحترافية، الإكسسوارات فائقة السرعة، وأنظمة التبريد المتطورة المعتمدة من محترفي الرياضات الإلكترونية.</p>
+            <div class="hero-btn-group">
+                <a href="#categories" class="btn btn-primary">تصفح الترسانة <i class="fa-solid fa-arrow-left"></i></a>
+                <a href="#bestsellers" class="btn btn-secondary">عروض الرحاب الحصرية</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- شريط الضمانات والاعتمادية البديل -->
+    <div class="brands-section">
+        <div class="container brands-slider">
+            <div class="brand-logo"><i class="fa-solid fa-shield-halved"></i> كفالة رسمية سنتين</div>
+            <div class="brand-logo"><i class="fa-solid fa-truck-fast"></i> توصيل سريع خلال ساعات</div>
+            <div class="brand-logo"><i class="fa-solid fa-headset"></i> دعم فني مباشر متواصل</div>
+        </div>
+    </div>
+
+    <!-- تصنيفات المنتجات -->
+    <section class="section-padding" id="categories">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">خيارات النخبة</span>
+                <h2 class="section-title">اختر فئتك المستهدفة</h2>
+            </div>
+            <div class="categories-grid">
+                <div class="category-card">
+                    <img src="https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?q=80&w=600&auto=format&fit=crop" alt="Peripherals" class="category-img">
+                    <div class="category-overlay">
+                        <h3 class="category-title">الإكسسوارات والمحيطيات</h3>
+                        <span class="category-link">اكتشف العتاد <i class="fa-solid fa-chevron-left"></i></span>
+                    </div>
+                </div>
+                <div class="category-card">
+                    <img src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7?q=80&w=600&auto=format&fit=crop" alt="Components" class="category-img">
+                    <div class="category-overlay">
+                        <h3 class="category-title">قطع وتجميعات الـ PC</h3>
+                        <span class="category-link">حدث تجميعتك <i class="fa-solid fa-chevron-left"></i></span>
+                    </div>
+                </div>
+                <div class="category-card">
+                    <img src="https://images.unsplash.com/photo-1598550476439-6847785fce6e?q=80&w=600&auto=format&fit=crop" alt="Audio" class="category-img">
+                    <div class="category-overlay">
+                        <h3 class="category-title">الصوتيات المحيطية</h3>
+                        <span class="category-link">عش داخل اللعبة <i class="fa-solid fa-chevron-left"></i></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- الأكثر مبيعاً -->
+    <section class="section-padding" id="bestsellers" style="background-color: var(--bg-surface);">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">تم اختبارها في أقوى البطولات</span>
+                <h2 class="section-title">المنتجات الأكثر مبيعاً</h2>
+            </div>
+            <div class="products-grid">
+                <!-- منتج 1 -->
+                <div class="product-card">
+                    <span class="product-badge">مطلوب جداً</span>
+                    <button class="product-wishlist" aria-label="إضافة للمفضلة"><i class="fa-regular fa-heart"></i></button>
+                    <div class="product-img-holder">
+                        <img src="https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?q=80&w=400&auto=format&fit=crop" alt="Pro Wireless Mouse">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-cat">ماوس جيمنج</span>
+                        <h3 class="product-name">ماوس احترافي لاسلكي فائق الحساسية</h3>
+                        <div class="product-meta">
+                            <span class="product-price"><span>45 د.ك</span> 39.50 د.ك</span>
+                            <button class="add-to-cart-btn" onclick="addToCart()" aria-label="إضافة للسلة"><i class="fa-solid fa-plus"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <!-- منتج 2 -->
+                <div class="product-card">
+                    <span class="product-badge">الأعلى تقييماً</span>
+                    <button class="product-wishlist" aria-label="إضافة للمفضلة"><i class="fa-regular fa-heart"></i></button>
+                    <div class="product-img-holder">
+                        <img src="https://images.unsplash.com/photo-1626958390898-162d3577f593?q=80&w=400&auto=format&fit=crop" alt="Mechanical Keyboard">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-cat">كيبوردات</span>
+                        <h3 class="product-name">كيبورد ميكانيكي احترافي سريع الاستجابة</h3>
+                        <div class="product-meta">
+                            <span class="product-price">58.00 د.ك</span>
+                            <button class="add-to-cart-btn" onclick="addToCart()" aria-label="إضافة للسلة"><i class="fa-solid fa-plus"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <!-- منتج 3 -->
+                <div class="product-card">
+                    <button class="product-wishlist" aria-label="إضافة للمفضلة"><i class="fa-regular fa-heart"></i></button>
+                    <div class="product-img-holder">
+                        <img src="https://images.unsplash.com/photo-1546435770-a3e426bf472b?q=80&w=400&auto=format&fit=crop" alt="Spatial Audio Headset">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-cat">سماعات</span>
+                        <h3 class="product-name">سماعة محيطية 7.1 لاسلكية بالكامل وعازلة للصوت</h3>
+                        <div class="product-meta">
+                            <span class="product-price">76.50 د.ك</span>
+                            <button class="add-to-cart-btn" onclick="addToCart()" aria-label="إضافة للسلة"><i class="fa-solid fa-plus"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <!-- منتج 4 -->
+                <div class="product-card">
+                    <button class="product-wishlist" aria-label="إضافة للمفضلة"><i class="fa-regular fa-heart"></i></button>
+                    <div class="product-img-holder">
+                        <img src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?q=80&w=400&auto=format&fit=crop" alt="240Hz Pro Monitor">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-cat">شاشات</span>
+                        <h3 class="product-name">شاشة جيمنج مقاس 27 بوصة وبتردد 240 هرتز Fast IPS</h3>
+                        <div class="product-meta">
+                            <span class="product-price"><span>150 د.ك</span> 135.00 د.ك</span>
+                            <button class="add-to-cart-btn" onclick="addToCart()" aria-label="إضافة للسلة"><i class="fa-solid fa-plus"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- المنتجات الجديدة -->
+    <section class="section-padding" id="newarrivals">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">إصدارات حصرية</span>
+                <h2 class="section-title">وصل حديثاً للتو</h2>
+            </div>
+            <div class="products-grid">
+                <!-- منتج 5 -->
+                <div class="product-card">
+                    <span class="product-badge">جديد</span>
+                    <button class="product-wishlist" aria-label="إضافة للمفضلة"><i class="fa-regular fa-heart"></i></button>
+                    <div class="product-img-holder">
+                        <img src="https://images.unsplash.com/photo-1600861195091-690c92f1d2cc?q=80&w=400&auto=format&fit=crop" alt="RTX GPU">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-cat">كروت شاشة</span>
+                        <h3 class="product-name">كرت شاشة احترافي فئة كسر السرعة لتقنيات الجيل الجديد</h3>
+                        <div class="product-meta">
+                            <span class="product-price">275.00 د.ك</span>
+                            <button class="add-to-cart-btn" onclick="addToCart()" aria-label="إضافة للسلة"><i class="fa-solid fa-plus"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <!-- منتج 6 -->
+                <div class="product-card">
+                    <span class="product-badge">جديد</span>
+                    <button class="product-wishlist" aria-label="إضافة للمفضلة"><i class="fa-regular fa-heart"></i></button>
+                    <div class="product-img-holder">
+                        <img src="https://images.unsplash.com/photo-1595225476474-87563907a212?q=80&w=400&auto=format&fit=crop" alt="Rig Case">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-cat">كيسات PC</span>
+                        <h3 class="product-name">كيس زجاجي بانورامي متطور مع مراوح تبريد RGB</h3>
+                        <div class="product-meta">
+                            <span class="product-price">52.00 د.ك</span>
+                            <button class="add-to-cart-btn" onclick="addToCart()" aria-label="إضافة للسلة"><i class="fa-solid fa-plus"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <!-- منتج 7 -->
+                <div class="product-card">
+                    <span class="product-badge">جديد</span>
+                    <button class="product-wishlist" aria-label="إضافة للمفضلة"><i class="fa-regular fa-heart"></i></button>
+                    <div class="product-img-holder">
+                        <img src="https://images.unsplash.com/photo-1616440347437-b1c73416efc2?q=80&w=400&auto=format&fit=crop" alt="Streamer Mic">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-cat">معدات ستريمرز</span>
+                        <h3 class="product-name">مايكروفون البث الاحترافي الاستوديو العازل للضوضاء</h3>
+                        <div class="product-meta">
+                            <span class="product-price">61.00 د.ك</span>
+                            <button class="add-to-cart-btn" onclick="addToCart()" aria-label="إضافة للسلة"><i class="fa-solid fa-plus"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <!-- منتج 8 -->
+                <div class="product-card">
+                    <span class="product-badge">جديد</span>
+                    <button class="product-wishlist" aria-label="إضافة للمفضلة"><i class="fa-regular fa-heart"></i></button>
+                    <div class="product-img-holder">
+                        <img src="https://images.unsplash.com/photo-1684369175133-722de1914eb1?q=80&w=400&auto=format&fit=crop" alt="Liquid Cooler">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-cat">أنظمة التبريد</span>
+                        <h3 class="product-name">مبرد مائي ذكي متطور 360mm مجهز بشاشة تخصيص LCD</h3>
+                        <div class="product-meta">
+                            <span class="product-price">67.00 د.ك</span>
+                            <button class="add-to-cart-btn" onclick="addToCart()" aria-label="إضافة للسلة"><i class="fa-solid fa-plus"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- آراء وتوصيات الزبائن -->
+    <section class="section-padding" style="background-color: var(--bg-surface);">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">تجارب اللاعبين</span>
+                <h2 class="section-title">آراء عملائنا في الكويت</h2>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"مشكورين على السرعة، الماوس وصلني الأندلس بـ 3 ساعات بس. أصلي والتغليف نظيف جداً."</p>
+                    <div class="client-info">
+                        <span class="client-name">أحمد الكندري</span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"سعر الكرت عندهم ممتاز مقارنة بباير المحلات اللي فوق بالرحاب. والتعامل مريح وصادق."</p>
+                    <div class="client-info">
+                        <span class="client-name">بو فهد</span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"التجميعة أدائها جبار والتبريد هادي جداً، والأهم إن الكفالة واضحة وموثوقة."</p>
+                    <div class="client-info">
+                        <span class="client-name">عبدالرحمن العجمي</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- الأسئلة الشائعة -->
+    <section class="section-padding" id="faq">
+        <div class="container faq-max-width">
+            <div class="section-header">
+                <span class="section-tag">مركز المعلومات السريعة</span>
+                <h2 class="section-title">الأسئلة الشائعة</h2>
+            </div>
+            
+            <div class="faq-item">
+                <button class="faq-trigger">
+                    <span>كم يستغرق توصيل الطلب داخل مناطق الكويت؟</span>
+                    <i class="fa-solid fa-chevron-down faq-icon"></i>
+                </button>
+                <div class="faq-content">
+                    <div class="faq-content-inner">
+                        نوفر خدمة التوصيل السريع خلال 3 إلى 5 ساعات فقط لجميع مناطق الكويت السكنية، وللتجميعات الاحترافية يتم التوصيل خلال 24 ساعة بعد الفحص والتركيب الكامل.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-trigger">
+                    <span>هل تتوفر كفالة رسمية على القطع وكروت الشاشة؟</span>
+                    <i class="fa-solid fa-chevron-down faq-icon"></i>
+                </button>
+                <div class="faq-content">
+                    <div class="faq-content-inner">
+                        نعم بالتأكيد. جميع المنتجات مكفولة كفالة رسمية لمدة سنتين ضد عيوب التصنيع والمشاكل الفنية، ونقوم باستبدال القطعة فوراً في حال وجود عطل مصنعي.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-trigger">
+                    <span>ما هي طرق الدفع المعتمدة لديكم في المتجر؟</span>
+                    <i class="fa-solid fa-chevron-down faq-icon"></i>
+                </button>
+                <div class="faq-content">
+                    <div class="faq-content-inner">
+                        نحن نعتمد بوابة دفع آمنة وسهلة، ونقبل الروابط المباشرة أو الدفع عند الاستلام كاش لتسهيل التعامل مع أصحاب المحلات والزبائن.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- الفوتر النظيف -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-logo-zone">
+                <div class="logo">
+                    <a href="#"><i class="fa-solid fa-gamepad"></i> ليفل أب</a>
+                </div>
+                <p>الأنظمة والعتاد المطور المصمم خصيصاً لتلبية طموحات اللاعبين ومحترفي الـ PC في الكويت.</p>
+                <div class="footer-socials">
+                    <a href="https://wa.me/96599998888" target="_blank" class="footer-social-link" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="https://instagram.com/#" target="_blank" class="footer-social-link" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://tiktok.com/#" target="_blank" class="footer-social-link" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                </div>
+            </div>
+            <div>
+                <h4 class="footer-title">ترسانة المنتجات</h4>
+                <ul>
+                    <li><a href="#" class="footer-link">الماوسات والكيبوردات</a></li>
+                    <li><a href="#" class="footer-link">السماعات والصوتيات</a></li>
+                    <li><a href="#" class="footer-link">كروت الشاشة الفائقة</a></li>
+                    <li><a href="#" class="footer-link">الكيسات والصناديق</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="footer-title">الدعم والمساعدة</h4>
+                <ul>
+                    <li><a href="#" class="footer-link">تتبع الشحنات والطلبات</a></li>
+                    <li><a href="#" class="footer-link">شروط الكفالة والاستبدال</a></li>
+                    <li><a href="#" class="footer-link">الدعم الفني المباشر</a></li>
+                    <li><a href="#" class="footer-link">سياسة الإرجاع المرنة</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="footer-title">موقعنا وفرعنا</h4>
+                <ul>
+                    <li><span class="footer-link" style="cursor:default;">الكويت - حولي - مجمع الرحاب</span></li>
+                    <li><span class="footer-link" style="cursor:default;">support@levelupstore.com</span></li>
+                    <li><span class="footer-link" style="cursor:default;">+965 9999-8888</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2026 متجر ليفل أب. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <!-- الأزرار الجانبية العائمة النظيفة (واتساب + لوكيشن فقط) -->
+    <div class="dock-container">
+        <a href="https://wa.me/96599998888" target="_blank" class="dock-btn dock-whatsapp" aria-label="تواصل عبر واتساب"><i class="fa-brands fa-whatsapp"></i></a>
+        <a href="https://maps.google.com/?q=Al-Rehab+Complex+Hawally" target="_blank" class="dock-btn dock-location" aria-label="موقعنا في مجمع الرحاب"><i class="fa-solid fa-location-dot"></i></a>
+    </div>
+
+    <!-- نظام تشغيل الجافاسكريبت والأنيميشن -->
+    <script>
+        // --- تفاعل الهيدر عند النزول لأسفل الشاشة ---
+        const header = document.querySelector('.header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // --- التحكم بالقائمة على الموبايل ---
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        mobileToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            const icon = mobileToggle.querySelector('i');
+            if (navMenu.classList.contains('active')) {
+                icon.className = 'fa-solid fa-xmark';
+            } else {
+                icon.className = 'fa-solid fa-bars';
+            }
+        });
+
+        // إغلاق قائمة الموبايل فور اختيار رابط للتنقل المريح
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                mobileToggle.querySelector('i').className = 'fa-solid fa-bars';
+            });
+        });
+
+        // --- نظام فتح وإغلاق الأسئلة الشائعة (الأكورديون) ---
+        const faqTriggers = document.querySelectorAll('.faq-trigger');
+
+        faqTriggers.forEach(trigger => {
+            trigger.addEventListener('click', () => {
+                const item = trigger.parentElement;
+                const content = trigger.nextElementSibling;
+                
+                if (item.classList.contains('active')) {
+                    content.style.maxHeight = null;
+                    item.classList.remove('active');
+                } else {
+                    document.querySelectorAll('.faq-item').forEach(otherItem => {
+                        otherItem.classList.remove('active');
+                        otherItem.querySelector('.faq-content').style.maxHeight = null;
+                    });
+
+                    item.classList.add('active');
+                    content.style.maxHeight = content.scrollHeight + "px";
+                }
+            });
+        });
+
+        // --- نظام العداد الافتراضي لإضافة المنتجات للسلة ---
+        let cartCount = 0;
+        const cartBadge = document.getElementById('cartBadge');
+
+        function addToCart() {
+            cartCount++;
+            cartBadge.innerText = cartCount;
+            
+            cartBadge.style.transform = 'scale(1.3)';
+            setTimeout(() => {
+                cartBadge.style.transform = 'scale(1)';
+            }, 200);
+        }
+    </script>
+</body>
+</html>
